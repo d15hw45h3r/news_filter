@@ -23,9 +23,7 @@ const ArticlePage: FC = () => {
         <div className='article-body'>
           <h2>{article?.title}</h2>
           <div>
-            <p>{article?.summary.repeat(3)}</p>
-            <p>{article?.summary.repeat(5)}</p>
-            <p>{article?.summary.repeat(2)}</p>
+            <p>{article?.summary}</p>
           </div>
         </div>
         <div className='article-footer'>
