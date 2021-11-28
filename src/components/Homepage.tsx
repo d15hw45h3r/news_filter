@@ -33,20 +33,20 @@ const Homepage: FC = () => {
           if (arrayValue.length === 0) {
             val.priority = -1;
             return val;
+          } else if (
+            isValueIncluded(arrayValue, val.title) &&
+            isValueIncluded(arrayValue, val.summary)
+          ) {
+            val.priority = 1;
+            return val;
+          } else if (isValueIncluded(arrayValue, val.title)) {
+            val.priority = 2;
+            return val;
+          } else if (isValueIncluded(arrayValue, val.summary)) {
+            val.priority = 3;
+            return val;
           } else {
-            if (
-              isValueIncluded(arrayValue, val.title) &&
-              isValueIncluded(arrayValue, val.summary)
-            ) {
-              val.priority = 1;
-              return val;
-            } else if (isValueIncluded(arrayValue, val.title)) {
-              val.priority = 2;
-              return val;
-            } else if (isValueIncluded(arrayValue, val.summary)) {
-              val.priority = 3;
-              return val;
-            }
+            return null;
           }
         })}
         keywords={value === '' ? [] : value.split(' ')}
