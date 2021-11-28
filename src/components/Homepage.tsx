@@ -19,36 +19,41 @@ const Homepage: FC = () => {
     setValue(e.target.value);
   };
 
-  const isValueIncluded = (array: string[], string: string) => {
+  const arrayContains = (array: string[], string: string) => {
     return array.some((value) => string.includes(value));
+  };
+
+  const formatString = (string: string) => {
+    return string.length > 100 ? string.substring(0, 97) : string;
+  };
+
+  const filterArticles = (val: IArticle) => {
+    let arrayValue: string[] = value.split(' ').filter((e) => e);
+    const title = formatString(val.title),
+      summary = formatString(val.summary);
+
+    if (arrayValue.length === 0) {
+      val.priority = -1;
+      return val;
+    } else if (arrayContains(arrayValue, title) && arrayContains(arrayValue, summary)) {
+      val.priority = 1;
+      return val;
+    } else if (arrayContains(arrayValue, title)) {
+      val.priority = 2;
+      return val;
+    } else if (arrayContains(arrayValue, summary)) {
+      val.priority = 3;
+      return val;
+    } else {
+      return null;
+    }
   };
 
   return (
     <Container className='home'>
       <InputField onChange={handleChange} value={value} />
       <ArticleList
-        articles={articles.filter((val) => {
-          let arrayValue: string[] = value.split(' ').filter((e) => e);
-
-          if (arrayValue.length === 0) {
-            val.priority = -1;
-            return val;
-          } else if (
-            isValueIncluded(arrayValue, val.title) &&
-            isValueIncluded(arrayValue, val.summary)
-          ) {
-            val.priority = 1;
-            return val;
-          } else if (isValueIncluded(arrayValue, val.title)) {
-            val.priority = 2;
-            return val;
-          } else if (isValueIncluded(arrayValue, val.summary)) {
-            val.priority = 3;
-            return val;
-          } else {
-            return null;
-          }
-        })}
+        articles={articles.filter((val) => filterArticles(val))}
         keywords={value === '' ? [] : value.split(' ')}
       />
     </Container>
