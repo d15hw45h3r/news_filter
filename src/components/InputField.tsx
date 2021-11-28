@@ -12,7 +12,7 @@ interface InputFieldProps {
 
 const InputField: FC<InputFieldProps> = ({ onChange, value }) => {
   return (
-    <div>
+    <div id='filter-field'>
       <h3>Filter by keywords</h3>
       <Input
         id='input-with-icon-adornment'
