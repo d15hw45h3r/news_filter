@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+$font-family: 'Montserrat', sans-serif;
+$color-lightgray: #eaeaea;
+$color-darkgray: #363636;
+$color-gray: #575757;
+$highight-color: #fff619a1;
+$border: 1px solid $color-lightgray;
+
+%default-text-style {
+  color: $color-darkgray;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  margin: 0;
+  padding: 0;
+}
+
+%border-radius {
+  border: $border;
+  border-radius: 5px;
+}
+
+@mixin box-shadow($color) {
+  box-shadow: 0px 8px 24px $color;
+}
+
+@mixin flexbox($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+body {
+  @extend %default-text-style;
+  font-family: $font-family;
+  background-color: #fff;
+}
+
+h2 {
+  @extend %default-text-style;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+.home {
+  margin-top: 50px;
+}
+
+.input-field.MuiInput-root {
+  padding: 7px 13px;
+  margin-bottom: 15px;
+  font-family: $font-family;
+  width: 50%;
+  color: $color-gray;
+  @extend %border-radius;
+  @include box-shadow(rgba(65, 45, 45, 0.05));
+
+  &::before,
+  &::after {
+    display: none;
+
+    &:hover {
+      display: none;
+    }
+  }
+}
+
+.news-list h4 {
+  padding-bottom: 5px;
+  border-bottom: $border;
+  margin-bottom: 45px;
+}
+
+.card.MuiPaper-root {
+  margin-bottom: 40px;
+  margin-right: 45px;
+  @extend %border-radius;
+  @include box-shadow(rgba(0, 0, 0, 0.05));
+
+  &:nth-child(3n + 3) {
+    margin-right: 0;
+  }
+
+  div,
+  p,
+  button {
+    font-family: $font-family;
+    text-transform: none;
+    color: $color-darkgray;
+  }
+}
+
+.card-link {
+  display: block;
+}
+
+.highlight-word {
+  background-color: $highight-color;
+}
+
+.date.MuiTypography-root {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  p {
+    color: $color-darkgray;
+    font-size: 14px;
+    margin: 0;
+    padding-top: 3px;
+    padding-left: 10px;
+    opacity: 0.6;
+  }
+
+  svg {
+    color: $color-darkgray;
+    opacity: 0.6;
+  }
+}
+
+.title.MuiTypography-root {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  @extend %default-text-style;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+
+  svg {
+    padding-left: 7px;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    svg {
+      transform: translateX(15%);
+    }
+  }
+}
+
+.btn-back {
+  @extend %default-text-style;
+  text-transform: none;
+  font-weight: 700;
+  margin-bottom: 45px;
+  margin-top: 35px;
+
+  svg {
+    padding-right: 10px;
+    transform: translateX(15%);
+  }
+
+  &:hover {
+    svg {
+      transform: translateX(0);
+    }
+  }
+}
+
+.card-actions.MuiCardActions-root {
+  padding-left: 25px;
+  padding-bottom: 25px;
+}
+
+.article-img {
+  height: 245px;
+  max-height: 245px;
+  z-index: -1;
+
+  div {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.card-body.MuiCardContent-root {
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 18px;
+}
+
+.article-wrapper > div.MuiPaper-root {
+  @include flexbox(column, space-between);
+
+  a {
+    height: 100%;
+    button {
+      height: 100%;
+      @include flexbox(column, flex-start);
+    }
+  }
+}
+
+.article-body {
+  z-index: 2;
+  background-color: #fff;
+  margin-top: -5%;
+  padding: 35px 75px 50px 75px;
+  @extend %border-radius;
+  @include box-shadow(rgba(0, 0, 0, 0.05));
+
+  h2 {
+    @extend %default-text-style;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+}
+
+.article-footer {
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-wrapper.MuiBox-root {
+    justify-content: space-evenly;
+
+    .card.MuiPaper-root {
+      margin-right: 0;
+    }
+  }
+}
