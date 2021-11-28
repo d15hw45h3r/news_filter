@@ -50,22 +50,26 @@ a {
   margin-top: 50px;
 }
 
-#filter-field .input-field.MuiInput-root {
-  padding: 7px 13px;
+#filter-field .input-field {
+  width: 50%;
+}
+
+#filter-field .input-field .MuiOutlinedInput-root {
   margin-bottom: 15px;
   font-family: $font-family;
-  width: 50%;
+  width: 100%;
   color: $color-gray;
-  @extend %border-radius;
+
   @include box-shadow(rgba(65, 45, 45, 0.05));
 
-  &::before,
-  &::after {
-    display: none;
+  input {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
 
-    &:hover {
-      display: none;
-    }
+  fieldset {
+    @extend %border-radius;
+    border-color: $color-lightgray;
   }
 }
 

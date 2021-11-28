@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { IArticle } from '../types/types';
 import { useParams, Link } from 'react-router-dom';
+import useFetchData from '../hooks/useFetchData';
 // mui
 import { Container } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import useFetchData from '../hooks/useFetchData';
 
 const ArticlePage: FC = () => {
   const params = useParams();
